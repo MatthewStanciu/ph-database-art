@@ -4,22 +4,22 @@ import useSWR, { Fetcher } from 'swr'
 import Submit from '../components/submit'
 import { toHex, toRgb } from '../lib/utils'
 
-type Joke = {
+type Message = {
   id: string
-  joke: string
+  message: string
 }
 
-const fallbackData: Joke[] = [
+const fallbackData: Message[] = [
   {
     id: '',
-    joke: 'init'
+    message: 'init'
   }
 ]
 
 const Home: NextPage = () => {
-  const fetcher: Fetcher<Joke[], string> = (route) =>
+  const fetcher: Fetcher<Message[], string> = (route) =>
     fetch(route).then((res) => res.json())
-  let { data: jokes } = useSWR('/api/jokes', fetcher, {
+  let { data: messages } = useSWR('/api/messages', fetcher, {
     fallbackData,
     refreshInterval: 5000
   })
@@ -32,18 +32,18 @@ const Home: NextPage = () => {
       </Head>
       <Submit />
       <div className="flex gap-2 ml-10 flex-wrap xl:container xl:items-center">
-        {jokes?.map((joke, i) => (
+        {messages?.map((message, i) => (
           <div
             className="grid w-[200px] h-[200px] rounded overflow-hidden"
-            key={joke.joke + i}
+            key={message.message + i}
             style={{
               gridTemplateColumns: `repeat(${Math.ceil(
-                Math.sqrt(toHex(joke.joke).length / 6)
+                Math.sqrt(toHex(message.message).length / 6)
               )}, 1fr)`
             }}
-            onClick={() => alert(joke.joke)}
+            onClick={() => alert(message.message)}
           >
-            {toHex(joke.joke)
+            {toHex(message.message)
               .match(/.{1,6}/g)
               ?.map((x, i) => (
                 <div
@@ -54,13 +54,15 @@ const Home: NextPage = () => {
                 ></div>
               ))}
             {[
-              ...(toHex(joke.id).match(/.{1,6}/g) || []),
-              ...(toHex(joke.joke).match(/.{1,6}/g) || [])
+              ...(toHex(message.id).match(/.{1,6}/g) || []),
+              ...(toHex(message.message).match(/.{1,6}/g) || [])
             ]
               .slice(
                 0,
-                Math.pow(Math.ceil(Math.sqrt(toHex(joke.joke).length / 6)), 2) -
-                  (toHex(joke.joke).match(/.{1,6}/g)?.length || 0)
+                Math.pow(
+                  Math.ceil(Math.sqrt(toHex(message.message).length / 6)),
+                  2
+                ) - (toHex(message.message).match(/.{1,6}/g)?.length || 0)
               )
               .map((x, i) => (
                 <div

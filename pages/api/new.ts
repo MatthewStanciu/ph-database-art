@@ -3,14 +3,14 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const prisma = new PrismaClient()
-  const joke = req.body.joke
-  if (!(typeof joke === 'string')) {
-    return res.status(400).send('joke must be a string')
+  const message = req.body.message
+  if (!(typeof message === 'string')) {
+    return res.status(400).send('message must be a string')
   }
   try {
-    await prisma.joke.create({
+    await prisma.message.create({
       data: {
-        joke
+        message
       }
     })
     res.json({ ok: true })
