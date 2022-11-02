@@ -29,8 +29,8 @@ const Submit = () => {
   }
 
   return (
-    <div className="flex flex-col items-left bg-gray-200 p-4 shadow-lg rounded gap-4 container max-w-sm">
-      <h1 className="mb-1 font-bold text-xl">Submit a Joke</h1>
+    <div className="flex flex-col items-left bg-gray-200 p-4 shadow-lg rounded container max-w-sm">
+      <h1 className="mb-4 font-bold text-2xl">Submit a Joke</h1>
       <form
         onSubmit={onSubmit}
         className="flex flex-col xs:flex-row items-left gap-y-2 xs:gap-x-2 mb-1"
