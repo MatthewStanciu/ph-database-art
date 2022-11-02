@@ -32,10 +32,10 @@ const Home: NextPage = () => {
       </Head>
       <Submit />
       <div className="flex gap-2 ml-10 flex-wrap xl:container xl:items-center">
-        {jokes?.map((joke) => (
+        {jokes?.map((joke, i) => (
           <div
             className="grid w-[200px] h-[200px] rounded overflow-hidden"
-            key={joke.id}
+            key={joke.joke + i}
             style={{
               gridTemplateColumns: `repeat(${Math.ceil(
                 Math.sqrt(toHex(joke.joke).length / 6)
@@ -45,9 +45,9 @@ const Home: NextPage = () => {
           >
             {toHex(joke.joke)
               .match(/.{1,6}/g)
-              ?.map((x) => (
+              ?.map((x, i) => (
                 <div
-                  key={x}
+                  key={x + i}
                   style={{
                     background: `rgb(${toRgb(x).join(',')})`
                   }}
@@ -62,9 +62,9 @@ const Home: NextPage = () => {
                 Math.pow(Math.ceil(Math.sqrt(toHex(joke.joke).length / 6)), 2) -
                   (toHex(joke.joke).match(/.{1,6}/g)?.length || 0)
               )
-              .map((x) => (
+              .map((x, i) => (
                 <div
-                  key={x}
+                  key={x + i + i}
                   style={{
                     background: `rgb(${toRgb(x).join(',')})`
                   }}
