@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const prisma = new PrismaClient()
-  const joke = req.query.joke
+  const joke = req.body.joke
   if (!(typeof joke === 'string')) {
     return res.status(400).send('joke must be a string')
   }
@@ -13,9 +13,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         joke
       }
     })
-    res.redirect(`/new?success=true`)
+    res.json({ ok: true })
   } catch (e) {
     console.log(e)
-    res.redirect(`/new?error=true`)
+    res.json({ ok: false })
   }
 }
