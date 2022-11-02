@@ -38,6 +38,7 @@ const Home: NextPage = () => {
               Math.sqrt(toHex(joke.joke).length / 6)
             )}, 1fr)`
           }}
+          onClick={() => alert(joke.joke)}
         >
           {toHex(joke.joke)
             .match(/.{1,6}/g)
