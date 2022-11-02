@@ -35,15 +35,14 @@ const Submit = () => {
         onSubmit={onSubmit}
         className="flex flex-col xs:flex-row items-left gap-y-2 xs:gap-x-2 mb-1"
       >
-        <input
-          type="joke"
+        <textarea
           name="joke"
           id="joke"
           value={joke}
           placeholder="Your Joke"
           onChange={(e) => setJoke(e.target.value)}
-          className="rounded border-none outline-none p-2"
-        ></input>
+          className="rounded border-none outline-none p-2 resize-none"
+        ></textarea>
         <button
           type="submit"
           className="bg-amber-400 dark:bg-amber-500 rounded-md shadow-md dark:shadow-black/25 py-2 xs:px-2 font-bold hover:scale-105 transform transition
