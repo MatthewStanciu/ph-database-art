@@ -31,7 +31,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Submit />
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-2 flex-wrap xl:container xl:items-center">
         {jokes?.map((joke) => (
           <div
             className="grid w-[200px] h-[200px] rounded overflow-hidden"
