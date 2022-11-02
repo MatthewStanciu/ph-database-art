@@ -47,6 +47,7 @@ const Home: NextPage = () => {
               .match(/.{1,6}/g)
               ?.map((x) => (
                 <div
+                  key={x}
                   style={{
                     background: `rgb(${toRgb(x).join(',')})`
                   }}
@@ -63,6 +64,7 @@ const Home: NextPage = () => {
               )
               .map((x) => (
                 <div
+                  key={x}
                   style={{
                     background: `rgb(${toRgb(x).join(',')})`
                   }}
