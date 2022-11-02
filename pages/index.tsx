@@ -25,13 +25,13 @@ const Home: NextPage = () => {
   })
 
   return (
-    <div className="flex flex-col items-center my-8 ml-10 gap-8">
+    <div className="flex flex-col items-center my-8 gap-8">
       <Head>
         <title>Database Art 🌈</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Submit />
-      <div className="flex gap-2 flex-wrap xl:container xl:items-center">
+      <div className="flex gap-2 ml-10 flex-wrap xl:container xl:items-center">
         {jokes?.map((joke) => (
           <div
             className="grid w-[200px] h-[200px] rounded overflow-hidden"
