@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-col items-center my-8 ml-10 gap-8">
       <Head>
-        <title>Create Next App</title>
+        <title>Database Art 🌈</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Submit />
