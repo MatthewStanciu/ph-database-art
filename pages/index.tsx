@@ -19,7 +19,7 @@ const fallbackData: Message[] = [
 const Home: NextPage = () => {
   const fetcher: Fetcher<Message[], string> = (route) =>
     fetch(route).then((res) => res.json())
-  let { data: messages } = useSWR('/api/messages', fetcher, {
+  const { data: messages } = useSWR('/api/messages', fetcher, {
     fallbackData,
     refreshInterval: 5000
   })
@@ -45,11 +45,11 @@ const Home: NextPage = () => {
           >
             {toHex(message.message)
               .match(/.{1,6}/g)
-              ?.map((x, i) => (
+              ?.map((color, i) => (
                 <div
-                  key={x + i}
+                  key={color + i}
                   style={{
-                    background: `rgb(${toRgb(x).join(',')})`
+                    background: `rgb(${toRgb(color).join(',')})`
                   }}
                 ></div>
               ))}
@@ -64,11 +64,11 @@ const Home: NextPage = () => {
                   2
                 ) - (toHex(message.message).match(/.{1,6}/g)?.length || 0)
               )
-              .map((x, i) => (
+              .map((color, i) => (
                 <div
-                  key={x + i + i}
+                  key={color + i + i}
                   style={{
-                    background: `rgb(${toRgb(x).join(',')})`
+                    background: `rgb(${toRgb(color).join(',')})`
                   }}
                 ></div>
               ))}
